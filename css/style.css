@@ -1,0 +1,61 @@
+html,
+body {
+    height: 100vmax;
+    width: 100%;
+    overflow: auto;
+    position: fixed;
+    /* background: rgb(41, 163, 185); */
+    background: black;
+    margin: 0;
+}
+.digits {
+    text-align: center;
+    font-size: 80vmin;
+    /* font-family: 'Lucida Grande',Lucida Sans,Lucida Sans Unicode,sans-serif,Arial,Helvetica,Verdana,sans-serif; */
+    /* font-family: 'Segoe UI Light','Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    /* font-family: 'Quicksand', sans-serif; */
+    font-family: 'Rajdhani', sans-serif;
+    line-height: 1;
+    color: white;
+}
+#main-container {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+#hour {
+    margin-bottom: 20px;
+}
+#colon {
+    display: none;
+}
+
+@media screen and (orientation: Landscape) {
+    #hour {
+        margin: 0;
+    }
+    #colon {
+        display: inline-block;
+    }
+    .digits {
+        text-align: left;
+        font-size: 85vmin;
+        height: 100vh;
+        line-height: 100vh;
+        display: inline-block !important;
+    }
+}
+
+/* #### iPhone 6 and 6 plus Portrait or Landscape #### */
+/* @media (min-device-height: 375px) and (min-device-width: 667px) and (-webkit-min-device-pixel-ratio: 3){
+  #hour {
+        margin: 0;
+    }
+    .digits {
+        text-align: left;
+        font-size: 65vmin;
+        line-height: 100vmin;
+        display: inline-block !important;
+    }
+} */

@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+
+    <!--Apple-->
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" sizes="50x50" href="shower50.png">
+    <link rel="apple-touch-icon" sizes="100x100" href="shower100.png">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!--<link rel="apple-touch-startup-image" href="http://fischgeek.com/playground/wg3dh98/startup.png" />-->
+
+    <script src="jquery.js"></script>
+    <script src="moment.js"></script>
+
+    <script>
+        var step = 'h1';
+        var t;
+        $(document).ready(function () {
+            setInterval(function () {
+                var m = moment();
+                var hour = m.format('hh');
+                var min = m.minute();
+                console.log('hour: ' + hour);
+                console.log('min: ' + min);
+                if (step == 'h1') {
+                    if (hour < 10) {
+                        t = '0';
+                    } else {
+                        var h1 = hour.toString().split("");
+                        t = h1[0];
+                    }
+                    step = 'h2';
+                } else if (step == 'h2') {
+                    if (hour < 10) {
+                        var h2 = hour.toString().split("");
+                        t = h2[1];
+                    }
+                    step = ':';
+                } else if (step == ':') {
+                    t = ':';
+                    step = 'm1';
+                } else if (step == 'm1') {
+                    if (min < 10) {
+                        t = '0';
+                    } else {
+                        var m1 = min.toString().split("");
+                        t = m1[0];
+                    }
+                    step = 'm2';
+                } else if (step == 'm2') {
+                    if (min > 9) {
+                        var m2 = min.toString().split("");
+                        t = m2[1];
+                    }
+                    step = 'final';
+                } else if (step == 'final') {
+                    t = '';
+                    step = 'h1';
+                }
+                $('#display').text(t);
+            }, 1500);
+        });
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            /*font-family: 'Segoe UI Light','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+            font-family: 'Lucida Grande',Lucida Sans,Lucida Sans Unicode,sans-serif,Arial,Helvetica,Verdana,sans-serif;
+            line-height: 1;
+            background: rgb(41, 128, 185);
+            color: white;
+        }
+        #main-container {
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+        }
+        #hour {
+            text-align: center;
+            font-size: 80vmin;
+        }
+        #minute {
+            text-align: center;
+            font-size: 80vmin;
+        }
+        #display {
+            text-align: center;
+            font-size: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <div id="display"></div>
+    </div>
+</body>
+</html>
