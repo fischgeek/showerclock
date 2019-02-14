@@ -21,9 +21,29 @@
     <script>
         $(document).ready(function () {
             setInterval(function () {
-                var m = moment();
-                $('#hour').text(m.format('h'));
-                $('#minute').text(m.format('mm'));
+                var m = moment()
+                var h = m.format('h')
+                var mm = m.format('mm')
+                var full = parseInt(h + mm)
+                $('#hour').text(h)
+                $('#minute').text(mm)
+                var clr = 'white'
+                
+                // first important time
+                if (full >= 855 && full < 900) {
+                    clr = 'yellow'
+                } else if (full == 900) {
+                    clr = 'red'
+                }
+
+                // second important time
+                if (full >= 1410 && full < 1415) {
+                    clr = 'yellow'
+                } else if (full == 1415) {
+                    clr = 'red'
+                }
+
+                $('.digits').css('color', clr)
             }, 1000);
         });
     </script>
